@@ -1,3 +1,7 @@
+#Objective of this analysis is to see how marathon running performance depedns on factors such as age, gender etc
+#One variable of interest here is the split strategy. 
+# I see how negative split or positive split strategy affects performance
+
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt 
@@ -27,6 +31,9 @@ grid_data.add_legend()
 sns.kdeplot(run_data.split_strategy[run_data.gender == 'M'], label='men', shade = 'True')
 sns.kdeplot(run_data.split_strategy[run_data.gender == 'F'], label='women', shade = 'True')
 plt.xlabel('split_strategy')
+
+#Average completion times by gender
+mean_m, mean_w = run_data.final_sec[run_data.gender== 'M'].mean(), run_data.final_sec[run_data.gender== 'W'].mean()
 
 #Violin Plot
 sns.violinplot("gender", "split_strategy", data=run_data, palette=["lightblue", "lightpink"])
