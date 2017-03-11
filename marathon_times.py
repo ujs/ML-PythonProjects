@@ -15,3 +15,4 @@ run_data['final_sec'] = run_data['final'].astype(int)/1E9
 run_data['split_strategy'] = run_data['final_sec'] - 2* run_data['split_sec']
 
 sns.distplot(run_data['split_strategy'], kde = 'False')
+plt.axvline(0, color = 'k', linestyle = '--')
