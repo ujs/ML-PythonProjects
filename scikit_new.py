@@ -42,6 +42,22 @@ plt.scatter (x,y)
 plt.plot(xfit, yfit)
 plt.axis([0,5,0,5])
 
+# Application on Iris Data
+# 1. Naive Bayes Classification- Supervised Learning
+from sklearn.cross_validation import train_test_split
+Xtrain, Xtest, ytrain, ytest = train_test_split(X_iris, Y_iris, random_state = 1)
+
+from sklearn.naive_bayes import GaussianNB # Import class
+model = GaussianNB() 					   # Instantiate
+model.fit(Xtrain, ytrain)				   # Fit model to data
+y_model = model.predict(Xtest)			   # Predict
+
+#Check Accuracy of Model's prediction
+
+
+from sklearn.metrics import accuracy_score
+print(accuracy_score(ytest, y_model))	
+
 
 
 
