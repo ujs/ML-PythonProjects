@@ -38,9 +38,9 @@ xfit = np.linspace(-1, 11)
 Xfit = xfit[:, np.newaxis]
 yfit = model.predict(Xfit)
 
-plt.scatter (x,y)
-plt.plot(xfit, yfit)
-plt.axis([0,5,0,5])
+# plt.scatter (x,y)
+# plt.plot(xfit, yfit)
+# plt.axis([0,5,0,5])
 
 
 
@@ -72,17 +72,64 @@ X_2D = model.transform(X_iris)
 
 iris['PCA1'] = X_2D[:, 0]
 iris['PCA2'] = X_2D[:, 1]
-sns.lmplot("PCA1", "PCA2", hue='species', data=iris, fit_reg=False)
+# sns.lmplot("PCA1", "PCA2", hue='species', data=iris, fit_reg=False)
 
-# 3. GMM- Unsupervised
-from sklearn.mixture import GMM
-model = GMM (n_components = 3, covariance_type = 'full' )
+
+# 3. GMM- Unsupervised    
+from sklearn.mixture import GaussianMixture
+model = GaussianMixture (n_components = 3, covariance_type = 'full' )
 model.fit(X_iris)                   
 y_gmm = model.predict(X_iris)  
 iris['cluster'] = y_gmm
-sns.lmplot("PCA1", "PCA2", data=iris, hue='species', col='cluster', fit_reg=False)
+# sns.lmplot("PCA1", "PCA2", data=iris, hue='species', col='cluster', fit_reg=False)
 
 
 
+# Applications of ML on Digits Data
+from sklearn.datasets import load_digits
+digits = load_digits()
+
+fig, axes = plt.subplots(10, 10, figsize=(8, 8), subplot_kw={'xticks':[], 'yticks':[]}, gridspec_kw=dict(hspace=0.1, wspace=0.1))
+
+
+for i, ax in enumerate(axes.flat):
+    ax.imshow(digits.images[i], cmap='binary', interpolation='nearest')
+    ax.text(0.05, 0.05, str(digits.target[i]),
+            transform=ax.transAxes, color='green')
+
+# Dimensionality (unsupervised)
+
+from sklearn.manifold import Isomap
+iso = Isomap(n_components=2)
+iso.fit(digits.data)
+data_projected = iso.transform(digits.data)
+data_projected.shape
+
+plt.scatter(data_projected[:, 0], data_projected[:, 1], c=digits.target,
+            edgecolor='none', alpha=0.5,
+            cmap=plt.cm.get_cmap('spectral', 10))
+plt.colorbar(label='digit label', ticks=range(10))
+plt.clim(-0.5, 9.5)
+
+# Naive Bayes (Supervised)
+
+X = digits.data
+y = digits.target
+
+Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, random_state=0)
+
+from sklearn.naive_bayes impot GaussianNB
+model = GaussianNB()
+model.fit(Xtrain,ytrain)
+y_model = model.predict(Xtest)
+
+# Confusion matrix to see where the Gaussian model messed up
+from sklearn.metrics import confusion_matrix
+
+mat = confusion_matrix(ytest, y_model)
+
+sns.heatmap(mat, square=True, annot=True, cbar=False)
+plt.xlabel('predicted value')
+plt.ylabel('actual value')
 
 
