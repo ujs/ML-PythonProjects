@@ -30,8 +30,8 @@ model.fit(X,y)
 c = model.coef_
 i = model.intercept_
 
-print('Model Coefficient: ' + str(c))
-print('Model intercept: ' + str(i))
+# print('Model Coefficient: ' + str(c))
+# print('Model intercept: ' + str(i))
 
 # Step 5. predicting unknown values of y based on the training
 xfit = np.linspace(-1, 11)
@@ -40,6 +40,8 @@ yfit = model.predict(Xfit)
 
 plt.scatter (x,y)
 plt.plot(xfit, yfit)
+plt.axis([0,5,0,5])
+
 
 
 
