@@ -79,6 +79,8 @@ from sklearn.mixture import GMM
 model = GMM (n_components = 3, covariance_type = 'full' )
 model.fit(X_iris)                   
 y_gmm = model.predict(X_iris)  
+iris['cluster'] = y_gmm
+sns.lmplot("PCA1", "PCA2", data=iris, hue='species', col='cluster', fit_reg=False)
 
 
 
