@@ -42,7 +42,12 @@ plt.scatter (x,y)
 plt.plot(xfit, yfit)
 plt.axis([0,5,0,5])
 
-# Application on Iris Data
+
+
+
+# Applications of ML on Iris Data
+
+
 # 1. Naive Bayes Classification- Supervised Learning
 from sklearn.cross_validation import train_test_split
 Xtrain, Xtest, ytrain, ytest = train_test_split(X_iris, Y_iris, random_state = 1)
@@ -55,9 +60,25 @@ y_model = model.predict(Xtest)			   # Predict
 #Check Accuracy of Model's prediction
 
 
-from sklearn.metrics import accuracy_score
-print(accuracy_score(ytest, y_model))	
+from sklearn.metrics import accuracy_score  #this has deprecated
+# print(accuracy_score(ytest, y_model))	
 
+
+# 2. PCA- Dimensionality (unsupervised)
+from sklearn.decomposition import PCA
+model = PCA(n_components = 2)
+model.fit(X_iris)
+X_2D = model.transform(X_iris)
+
+iris['PCA1'] = X_2D[:, 0]
+iris['PCA2'] = X_2D[:, 1]
+sns.lmplot("PCA1", "PCA2", hue='species', data=iris, fit_reg=False)
+
+# 3. GMM- Unsupervised
+from sklearn.mixture import GMM
+model = GMM (n_components = 3, covariance_type = 'full' )
+model.fit(X_iris)                   
+y_gmm = model.predict(X_iris)  
 
 
 
