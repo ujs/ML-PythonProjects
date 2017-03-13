@@ -75,4 +75,12 @@ X = np.array([[ nan, 0,   3  ],
               [ 4,   nan, 6  ],
               [ 8,   8,   1  ]])
 y = np.array([14, 16, -1,  8, -5])
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(Imputer(strategy='mean'),
+                      PolynomialFeatures(degree=2),
+                      LinearRegression())
+
+model.fit(X, y)
+print(model.predict(X))
 
