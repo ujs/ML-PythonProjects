@@ -85,6 +85,10 @@ iris['cluster'] = y_gmm
 
 
 
+
+
+
+
 # Applications of ML on Digits Data
 from sklearn.datasets import load_digits
 digits = load_digits()
