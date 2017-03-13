@@ -45,9 +45,9 @@ pd.DataFrame(X.toarray(), columns=vec.get_feature_names())
 
 #Trial (different transforms)
 
-x = np.array([3,5,2,6,4,2,6,3,6])
+x = np.array([3,5,2,6,4,2])
 
-Y_trial = np.array([5,2,6,8,3,5,9,1,2])
+Y_trial = np.array([5,2,6,8,3,5])
 
 
 
@@ -56,8 +56,8 @@ X_trial = x[:,np.newaxis]
 X_test = X_trial
 model = LinearRegression()
 Y_model = model.fit(X_trial,Y_trial).predict(X_test)
-# plt.scatter(X_trial,Y_trial)
-# plt.plot(X_test,Y_model)
+plt.scatter(X_trial,Y_trial)
+plt.plot(X_test,Y_model)
 
 
 from sklearn.preprocessing import PolynomialFeatures
@@ -65,6 +65,6 @@ tran = PolynomialFeatures(degree=3, include_bias=False)
 X_new = tran.fit_transform(X_trial)
 
 Y_model = model.fit(X_new,Y_trial).predict(X_new)
-plt.scatter(x,Y_trial)
-plt.plot(x,Y_model)
+# plt.scatter(x,Y_trial)
+# plt.plot(x,Y_model)
 
