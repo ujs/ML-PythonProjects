@@ -27,10 +27,10 @@ plt.scatter(X.ravel(), y, color='black')
 
 for degree in [1,2,4,6]:
 	y_test = PolynomialRegression(degree).fit(X,y).predict(X_test)
-# 	plt.plot(X_test.ravel(), y_test, label='degree={0}'.format(degree))
-# plt.xlim(-0.1, 1.0)
-# plt.ylim(-2, 12)
-# plt.legend(loc='best')
+	plt.plot(X_test.ravel(), y_test, label='degree={0}'.format(degree))
+plt.xlim(-0.1, 1.0)
+plt.ylim(-2, 12)
+plt.legend(loc='best')
 
 # Comparing validation scores and training scores across degree
 
