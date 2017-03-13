@@ -16,9 +16,6 @@ vec.fit_transform(data)
 
 
 
-
-
-
 # #Text
 
 # #Approach 1- CountVectorizer
