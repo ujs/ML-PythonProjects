@@ -47,7 +47,7 @@ pd.DataFrame(X.toarray(), columns=vec.get_feature_names())
 
 x = np.array([3,5,2,6,4,2,6,3,6])
 
-Y_trial = np.random.rand(9)
+Y_trial = np.array([5,2,6,8,3,5,9,1,2])
 
 
 
