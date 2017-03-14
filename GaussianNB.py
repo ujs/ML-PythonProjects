@@ -50,6 +50,6 @@ plt.ylabel('predicted label')
 
 
 #Function to predict category of news based on a phrase/sentence
-# def predict_category(s, train=train, model=model):
-#     pred = model.predict([s])
-#     return train.target_names[pred]
+def predict_category(s, train=train, model=model):
+    pred = model.predict([s])
+    return train.target_names[pred]
