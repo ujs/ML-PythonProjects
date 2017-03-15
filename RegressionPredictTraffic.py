@@ -10,9 +10,9 @@ data = counts.resample('d', how='sum')
 data['Total'] = data.sum(axis =1)
 data = data['Total']
 
-days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-for i in range(7):
-	data[days[i]] = (data.index.day == i).astype(float)
+# days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+# for i in range(7):
+# 	data[days[i]] = (data.index.day == i).astype(float)
 
 from pandas.tseries.holiday import USFederalHolidayCalendar
 cal = USFederalHolidayCalendar()
