@@ -6,10 +6,10 @@ from sklearn.datasets import fetch_lfw_people
 faces = fetch_lfw_people(min_faces_per_person=60)
 
 #Examining few images
-fig, ax = plt.subplots(3,5)
-for i, axi in enumerate(ax.flat):
-	axi.imshow(faces.images[i],cmap = 'bone')
-	axi.set(xticks = [], yticks = [], xlabel = faces.target_names[faces.target[i]])
+# fig, ax = plt.subplots(3,5)
+# for i, axi in enumerate(ax.flat):
+# 	axi.imshow(faces.images[i],cmap = 'bone')
+# 	axi.set(xticks = [], yticks = [], xlabel = faces.target_names[faces.target[i]])
 
 #Each Image has 3K pixels. So will use PCA to extract main 150 features
 #Importing libraries (Classes) for SVM, PCA and pipelines
@@ -37,16 +37,25 @@ grid = GridSearchCV(model, param_grid)
 
 # Fitting the model to our data!
 grid.fit(Xtrain, ytrain)
-print(grid.best_params_)
+print(grid.fit(Xtrain, ytrain).score)
+
+model = grid.best_estimator_
+y_fit_train = model.predict(Xtrain)
+
+#Calculating Accuracy Score
+from sklearn.metrics import accuracy_score
+print (metrics.accuracy_score(yfit_fit_train,ytest)) #Training Score
+# print(grid.best_params_)
 
 #Predicting for test data
-model = grid.best_estimator_
 yfit = model.predict(Xtest)
+print (metrics.accuracy_score(yfit,ytest))  # Validation Score
+
+
 
 #Checking the model and seeing how we did
 from sklearn.metrics import classification_report
-print(classification_report(ytest, yfit,
-                            target_names=faces.target_names))
+# print(classification_report(ytest, yfit, target_names=faces.target_names))
 
 
 # Confusion Matrix
