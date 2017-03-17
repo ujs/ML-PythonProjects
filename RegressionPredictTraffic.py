@@ -43,3 +43,17 @@ weather['PRCP'] /= 254
 weather['dry day'] = (weather['PRCP'] == 0).astype(int)
 
 daily = daily.join(weather[['PRCP', 'Temp (C)', 'dry day']])
+
+daily['annual'] = (daily.index - daily.index[0]).days / 365
+
+# Drop any rows with null values
+daily.dropna(axis=0, how='any', inplace=True)
+
+column_names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'holiday',
+                'daylight_hrs', 'PRCP', 'dry day', 'Temp (C)', 'annual']
+X = daily[column_names]
+y = daily['Total']
+
+model = LinearRegression(fit_intercept=False)
+model.fit(X, y)
+daily['predicted'] = model.predict(X)
