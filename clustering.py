@@ -6,3 +6,9 @@ import seaborn as sns
 
 # Load Data
 from sklearn.datasets import load_digits
+digits = load_digits
+
+#Clustering
+
+from sklearn.cluster import KMeans
+clusters = kmeans.fit_predict(digits.data)
