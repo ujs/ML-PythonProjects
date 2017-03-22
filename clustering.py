@@ -18,8 +18,8 @@ print(kmeans.cluster_centers_)
 
 Assigning Labels
 
-from scipy.stats import mode
-labels = np.zeros_like(clusters)
+# from scipy.stats import mode
+# labels = np.zeros_like(clusters)
 
 
 Example 2- k-means for color compression
