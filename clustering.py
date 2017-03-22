@@ -14,12 +14,12 @@ from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=10, random_state=0)
 X = load_digits().data
 clusters = kmeans.fit_predict(X)
-# print(kmeans.cluster_centers_)
+print(kmeans.cluster_centers_)
 
-#Assigning Labels
+Assigning Labels
 
-# from scipy.stats import mode
-# labels = np.zeros_like(clusters)
+from scipy.stats import mode
+labels = np.zeros_like(clusters)
 
 
-# Example 2- k-means for color compression
+Example 2- k-means for color compression
