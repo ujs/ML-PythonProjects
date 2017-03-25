@@ -34,9 +34,9 @@ daily[['daylight_hrs']].plot()
 plt.ylim(8, 17)
 
 # temperatures are in 1/10 deg C; convert to C
-weather['TMIN'] /= 10
-weather['TMAX'] /= 10
-weather['Temp (C)'] = 0.5 * (weather['TMIN'] + weather['TMAX'])
+# weather['TMIN'] /= 10
+# weather['TMAX'] /= 10
+# weather['Temp (C)'] = 0.5 * (weather['TMIN'] + weather['TMAX'])
 
 # precip is in 1/10 mm; convert to inches
 weather['PRCP'] /= 254
