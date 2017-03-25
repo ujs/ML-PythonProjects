@@ -54,6 +54,6 @@ column_names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'holiday',
 X = daily[column_names]
 y = daily['Total']
 
-# model = LinearRegression(fit_intercept=False)
-# model.fit(X, y)
-# daily['predicted'] = model.predict(X)
+model = LinearRegression(fit_intercept=False)
+model.fit(X, y)
+daily['predicted'] = model.predict(X)
