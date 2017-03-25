@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt 
 import seaborn as sns
+
 from sklearn.datasets import fetch_lfw_people
 faces = fetch_lfw_people(min_faces_per_person=60)
 
