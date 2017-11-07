@@ -28,6 +28,6 @@ X = profit_data.iloc[:,0:cols-1]
 y = profit_data.iloc[:,cols-1:cols]
 
 #converting from data frame to matrices
-# X= np.matrix(X.values)
-# y= np.matrix(y.values)
-# theta = np.matrix(np.array([0,0]))
+X= np.matrix(X.values)
+y= np.matrix(y.values)
+theta = np.matrix(np.array([0,0]))
